@@ -1,4 +1,4 @@
-#Introduce:
+# Introduce:
 
 This script used to check scam websites of keyber network. `list_check.json` is input, where you enter suspicious websites. When you run script this will output to folder `list_scam`. The output is written every day.
 
