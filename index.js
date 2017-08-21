@@ -1,4 +1,4 @@
-
+"use strict";
 var fs = require('fs');
 var Crawler = require("crawler");
 
@@ -11,9 +11,9 @@ const keyWords = ["keybernetwork", "keyber network", "kyber network", "kybernetw
 main();
 
 //read list check
-function main(){
-    let list = JSON.parse(fs.readFileSync('list_check.json', 'utf8'));
-    for(let i = 0; i< list.length; i++){
+function main(){    
+    var list = JSON.parse(fs.readFileSync('list_check.json', 'utf8'));
+    for(var i = 0; i< list.length; i++){
         checkScram(list[i], writeScam)        
     }    
 }
@@ -29,8 +29,8 @@ function checkScram(url, callBack){
                // console.log(error);
             }else{
                // console.log(res)
-                let body = res.body.toLowerCase();
-                for (let i = 0; i< keyWords.length;i++){
+                var body = res.body.toLowerCase();
+                for (var i = 0; i< keyWords.length;i++){
                     if (body.includes(keyWords[i])){
                         callBack(url)
                     }
@@ -44,12 +44,12 @@ function checkScram(url, callBack){
 }
 
 function writeScam(url){
-    let fileName = getFileName()
+    var fileName = getFileName()
 
     fs.stat('list_scam/'+fileName+'.json', function(err, stat) {
         if(err == null) {
-            let list = JSON.parse(fs.readFileSync('list_scam/'+fileName+'.json', 'utf8'));
-            for(let i = 0; i< list.length; i++){
+            var list = JSON.parse(fs.readFileSync('list_scam/'+fileName+'.json', 'utf8'));
+            for(var i = 0; i< list.length; i++){
                 if (list[i] === url){
                     return;
                 }
@@ -79,12 +79,12 @@ function writeScam(url){
 
 
 function getFileName(){
-    let dateObj = new Date();        
-    let year = dateObj.getUTCFullYear();
-    let month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var dateObj = new Date();        
+    var year = dateObj.getUTCFullYear();
+    var month = dateObj.getUTCMonth() + 1; //months from 1-12
     if (month < 10) month = "0" + month;
-    let day = dateObj.getUTCDate();
-    //let hour = dateObj.getHours();
+    var day = dateObj.getUTCDate();
+    //var hour = dateObj.getHours();
     //if (hour < 10) hour = "0" + hour
     return year + "_" + month + "_" + day
 }
