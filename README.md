@@ -1,12 +1,16 @@
+# Introduce:
 
+This script used to check scam websites of keyber network. `list_check.json` is input, where you enter suspicious websites. When you run script this will output to folder `list_scam`. The output is written every day.
 
+# How to install:
 
 `$ bash install.sh`
 
-Test it work:
+# Test it work:
 
 `$ node index.js`
 
+# Run crontab
 If it is successful, you will see file in list_scam folder. 
 To configure running this script every hour, please try:
 
